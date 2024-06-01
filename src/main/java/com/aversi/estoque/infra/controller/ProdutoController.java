@@ -21,7 +21,7 @@ public class ProdutoController {
 
    @PostMapping
    public ProdutoDto cadastrarProduto(@RequestBody ProdutoDto dto) {
-    Produto salvo = criarProduto.cadastraProduto(new Produto("1", "Caneta BIC", 4, "caixa"));
+    Produto salvo = criarProduto.cadastraProduto(new Produto(dto.id(), dto.nome(), dto.quantidade(), dto.unidadeMedida()));
        return new ProdutoDto(salvo.getId(), salvo.getNome(), salvo.getQuantidade(), salvo.getUnidadeMedida());
    }
 
