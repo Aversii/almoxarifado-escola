@@ -6,7 +6,7 @@ import com.aversi.estoque.infra.persistence.ProdutoEntity;
 public class ProdutoEntityMapper {
 
     public ProdutoEntity toEntity(Produto produto){
-        return new ProdutoEntity(produto.getId(),produto.getNome(),produto.getQuantidade(),produto.getUnidadeMedida());
+        return new ProdutoEntity(produto.getNome(),produto.getQuantidade(),produto.getUnidadeMedida());
     }
 
     public Produto toDomain (ProdutoEntity entity){
