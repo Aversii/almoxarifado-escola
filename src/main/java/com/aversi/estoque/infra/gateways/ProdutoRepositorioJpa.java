@@ -1,5 +1,8 @@
 package com.aversi.estoque.infra.gateways;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.aversi.estoque.application.Repository;
 import com.aversi.estoque.domain.entities.Produto;
 import com.aversi.estoque.infra.persistence.ProdutoEntity;
@@ -19,6 +22,13 @@ public class ProdutoRepositorioJpa implements Repository {
         ProdutoEntity entity = mapper.toEntity(produto);
         repo.save(entity);
         return mapper.toDomain(entity);
+    }
+
+    @Override
+    public List <Produto> listarTodosProdutos(){
+        return repo.findAll().stream()
+                .map(mapper::toDomain)
+                .collect(Collectors.toList());        
     }
 
 }

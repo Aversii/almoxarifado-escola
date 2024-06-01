@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.aversi.estoque.application.CriarProduto;
+import com.aversi.estoque.application.ListarProduto;
 import com.aversi.estoque.application.Repository;
 import com.aversi.estoque.infra.gateways.ProdutoEntityMapper;
 import com.aversi.estoque.infra.gateways.ProdutoRepositorioJpa;
@@ -20,6 +21,11 @@ public class ProdutoConfig {
     @Bean
     ProdutoRepositorioJpa criarRepositorioProdutoJpa(ProdutoEntityMapper mapper, ProdutoRepositorio repo){
         return new ProdutoRepositorioJpa(mapper,repo);
+    }
+
+    @Bean
+    ListarProduto listarProduto (Repository repo){
+        return new ListarProduto(repo);
     }
 
     @Bean
