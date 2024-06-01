@@ -4,50 +4,58 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+import java.util.UUID;
+
 @Entity
-@Table(name = "produto")
+@Table(name = "material")
 public class ProdutoEntity {
 
     @Id
-    private String id;
+    private String id_material;
     private String nome;
     private Integer quantidade;
-    private String unidadeMedida;
+    private String unidade_medida;
+
     public ProdutoEntity() {
+        this.id_material = UUID.randomUUID().toString();
     }
-    public ProdutoEntity(String id, String nome, Integer quantidade, String unidadeMedida) {
-        this.id = id;
+
+    public ProdutoEntity(String nome, Integer quantidade, String unidadeMedida) {
+        this.id_material = UUID.randomUUID().toString();
         this.nome = nome;
         this.quantidade = quantidade;
-        this.unidadeMedida = unidadeMedida;
+        this.unidade_medida = unidadeMedida;
     }
+
     public String getId() {
-        return id;
+        return id_material;
     }
-    public void setId(String id) {
-        this.id = id;
+
+    public void setId(String idMaterial) {
+        this.id_material = idMaterial;
     }
+
     public String getNome() {
         return nome;
     }
+
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public Integer getQuantidade() {
         return quantidade;
     }
+
     public void setQuantidade(Integer quantidade) {
         this.quantidade = quantidade;
     }
-    public String getUnidadeMedida() {
-        return unidadeMedida;
-    }
-    public void setUnidadeMedida(String unidadeMedida) {
-        this.unidadeMedida = unidadeMedida;
-    }
-    
-    
 
-    
-    
+    public String getUnidadeMedida() {
+        return unidade_medida;
+    }
+
+    public void setUnidadeMedida(String unidadeMedida) {
+        this.unidade_medida = unidadeMedida;
+    }
 }
