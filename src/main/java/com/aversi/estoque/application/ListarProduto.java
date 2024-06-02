@@ -16,6 +16,10 @@ public class ListarProduto {
 
     }
 
+    public Produto listarProdutoPorId (String id){
+        return this.produtoRepo.listarProdutoPorId(id);
+    }
+
     
 
     
