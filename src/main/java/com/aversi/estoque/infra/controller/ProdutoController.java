@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aversi.estoque.application.CriarProduto;
+import com.aversi.estoque.application.DeletarProduto;
 import com.aversi.estoque.application.ListarProduto;
 import com.aversi.estoque.domain.entities.Produto;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,10 +26,14 @@ public class ProdutoController {
 
     private CriarProduto criarProduto;
     private ListarProduto listarProduto;
+    private DeletarProduto deletarProduto;
 
-    public ProdutoController(CriarProduto criarProduto, ListarProduto listarProduto) {
+    
+
+    public ProdutoController(CriarProduto criarProduto, ListarProduto listarProduto, DeletarProduto deletarProduto) {
         this.criarProduto = criarProduto;
         this.listarProduto = listarProduto;
+        this.deletarProduto = deletarProduto;
     }
 
     @PostMapping
@@ -51,6 +57,11 @@ public class ProdutoController {
         return new ProdutoDto(produto.getId(), produto.getNome(), produto.getQuantidade(), produto.getUnidadeMedida());
    
     }
+
+    @DeleteMapping("/{id}")
+        public void deletarProduto(@PathVariable("id") String id){
+            deletarProduto.delecao(id); 
+        }
     
 
 }

@@ -4,6 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import com.aversi.estoque.application.CriarProduto;
+import com.aversi.estoque.application.DeletarProduto;
 import com.aversi.estoque.application.ListarProduto;
 import com.aversi.estoque.application.Repository;
 import com.aversi.estoque.infra.gateways.ProdutoEntityMapper;
@@ -26,6 +27,11 @@ public class ProdutoConfig {
     @Bean
     ListarProduto listarProduto (Repository repo){
         return new ListarProduto(repo);
+    }
+
+    @Bean
+    DeletarProduto deletarProduto (Repository repo){
+        return new DeletarProduto(repo);
     }
 
     @Bean
