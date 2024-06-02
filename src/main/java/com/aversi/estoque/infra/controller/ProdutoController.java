@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 @RequestMapping("/produtos")
@@ -43,5 +44,13 @@ public class ProdutoController {
                         produto.getUnidadeMedida()))
                 .collect(Collectors.toList());
     }
+
+    @GetMapping("/{id}")
+        public ProdutoDto listarProdutoPorId(@PathVariable("id")  String id) {
+        Produto produto = listarProduto.listarProdutoPorId(id);
+        return new ProdutoDto(produto.getId(), produto.getNome(), produto.getQuantidade(), produto.getUnidadeMedida());
+   
+    }
+    
 
 }
