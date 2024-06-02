@@ -39,4 +39,14 @@ public class ProdutoRepositorioJpa implements Repository {
         return entity.map(mapper::toDomain)
                      .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
     }
+
+ @Override
+    public void deleteProduto(String id) {
+        Optional<ProdutoEntity> entity = repo.findById(id);
+        if (entity.isPresent()) {
+            repo.delete(entity.get());
+        } else {
+            throw new RuntimeException("Produto não encontrado");
+        }
+    }
 }
